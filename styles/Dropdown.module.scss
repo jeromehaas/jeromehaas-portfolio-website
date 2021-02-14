@@ -13,6 +13,7 @@
 
 .upper {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 20px 20px;
@@ -54,4 +55,14 @@
   max-height: 100%;
   overflow: hidden;
   padding: 20px 20px 20px 20px; 
+}
+
+@media screen and (max-width: 1000px) {
+  .itemWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px 0;
+  }
 }
