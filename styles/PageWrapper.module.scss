@@ -1,11 +1,10 @@
 @import 'variables';
 
 #wrapper {
-  border: 10px solid orangered;
+  border: 2px solid orangered;
   background-color: $black;
   display: flex;
   flex-direction: row;
   overflow-Y: scroll;
   height: 100vh;
-  overflow: scroll;
 }

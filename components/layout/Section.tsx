@@ -1,14 +1,16 @@
 import React from 'react';
 import styles from '@/styles/Section.module.scss';
 
-interface Props { }
+interface Props {
+  children: React.ReactNode
+}
 
-const Section: React.FunctionComponent<Props> = () => {
+const Section: React.FunctionComponent<Props> = ({ children }) => {
 
 
   return (
     <div className={styles.section}>
-      <p>SECTION</p>
+      {children}
     </div>
   );
 
