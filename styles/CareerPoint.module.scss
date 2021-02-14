@@ -1,0 +1,25 @@
+@import 'variables';
+
+.wrapper {
+  padding-bottom: 40px;
+  padding-left: 50px;
+  margin-left: 20px;
+  position: relative;
+  border-left: 1px solid $white;
+}
+
+.wrapper:last-child {
+  border-left: 0px solid $white;
+}
+
+.wrapper::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid $white;
+  left: -10px;
+  top: 0px;
+  background-color: $black;
+}
