@@ -1,18 +1,31 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
+import SectionWrapper from '@/components/layout/SectionWrapper'
+import PageWrapper from '@/components/layout/PageWrapper'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>Jérôme Haas |  Front-End Developer</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-      
-      </main>
+      <PageWrapper>
 
-    </div>
+        <SectionWrapper>
+            
+        </SectionWrapper>
+
+        <SectionWrapper>
+          section 1
+        </SectionWrapper>
+
+
+
+      </PageWrapper>
+
+
+    </>
   )
 }
