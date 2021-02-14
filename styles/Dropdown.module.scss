@@ -1,0 +1,57 @@
+@import 'variables';
+
+.wrapper {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.upper, .lower {
+  padding: 20px 20px; 
+  background-color: $dark-grey;
+}
+
+.upper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  background-color: $dark-grey;
+  border-bottom: 0.5px solid $white;
+}
+
+.topic {
+  line-height: 30px;
+  vertical-align: middle;
+}
+
+.itemWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  transform: rotate(0);
+}
+
+.arrow.active {
+  transform: rotate(90deg);
+}
+
+.item {
+  margin: 10px 0;
+}
+
+.lower {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  transition: all 0s ease;
+}
+
+.lower.active {
+  max-height: 100%;
+  overflow: hidden;
+  padding: 20px 20px 20px 20px; 
+}

@@ -10,8 +10,6 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   scroll-behavior: smooth;
-}
-html {
 
 }
 
@@ -29,6 +27,10 @@ h1, h2 {
   font-weight: 300;
 }
 
+h2 {
+  margin-bottom: 30px;
+}
+
 h3 {
   font-size: 30px;
   font-weight: 700;
@@ -38,6 +40,10 @@ p {
   font-size: 17px;
   font-weight: 300;
   line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
 }
 
 @font-face {
