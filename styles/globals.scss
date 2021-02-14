@@ -9,6 +9,10 @@
   outline: none;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+html {
+
 }
 
 *::-webkit-scrollbar {

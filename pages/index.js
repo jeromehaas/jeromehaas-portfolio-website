@@ -4,6 +4,9 @@ import SectionWrapper from '@/components/layout/SectionWrapper';
 import PageWrapper from '@/components/layout/PageWrapper';
 import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
+import Link from 'next/link';
+
+
 
 
 export default function Home() {
@@ -19,7 +22,9 @@ export default function Home() {
 
       <PageLayout>
 
-        <Section>
+
+
+        <Section id={"start"}>
           <div id={styles.intro} className={styles.section}>
             <div id={styles.introWrapper} className={styles.sectionWrapper}>
               <img id={styles.portrait} src="/images/jeromehaas.png" alt="Jérôme Haas"/>
@@ -31,12 +36,31 @@ export default function Home() {
             </div>
           </div>
         </Section>
-        <Section>
+
+        <Section id={"skills"}>
           <h2>Skills</h2>
         </Section>
-        <Section>
+
+        <Section id={"work"}>
           <h2>Work</h2>
         </Section>
+
+        <Section id={"career"}>
+          <h2>Career</h2>
+        </Section>
+
+        <Section id={"tools"}>
+          <h2>Tools</h2>
+        </Section>
+
+        <Section id={"contact"}>
+          <h2>Contact</h2>
+        </Section>
+
+        <Section id={"references"}>
+          <h2>References</h2>
+        </Section>
+
 
 
 

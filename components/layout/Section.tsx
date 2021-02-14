@@ -5,11 +5,11 @@ interface Props {
   children: React.ReactNode
 }
 
-const Section: React.FunctionComponent<Props> = ({ children }) => {
+const Section: React.FunctionComponent<Props> = ({ children, id }) => {
 
 
   return (
-    <div className={styles.section}>
+    <div className={styles.section} id={id}>
       {children}
     </div>
   );
