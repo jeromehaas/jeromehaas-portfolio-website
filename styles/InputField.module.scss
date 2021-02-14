@@ -1,0 +1,64 @@
+@import 'variables';
+
+.inputFieldWrapper {
+  background-color: $dark-grey;
+  border: none;
+  border-bottom: 1px solid $white;
+  margin: 0 20px 20px 0;
+  color: $white;
+  position: relative;
+  height: 70px;
+}
+
+.textareaWrapper {
+  background-color: $dark-grey;
+  border: none;
+  border-bottom: 1px solid $white;
+  margin: 0 20px 20px 0;
+  color: $white;
+  position: relative;
+  height: 140px;
+}
+
+.submitWrapper {
+  background-color: $dark-grey;
+  border: none;
+  border-bottom: 1px solid $white;
+  margin: 20px;
+  color: $white;
+  position: relative;
+}
+
+.inputField {
+  position: absolute;
+  top: 0;
+  padding: 40px 15px 20px 15px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: $white;
+  border: none;
+  border-bottom: 1px solid $white;
+  font-size: 15px;
+  width: 100%;
+  background-color: $dark-grey;
+  outline: none;
+}
+
+.inputLabel {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 12px;
+}
+
+.inputField[type=text] {
+
+}
+
+
+
+.inputField[type=submit] {
+    text-align: center;
+    padding: 20px;
+}

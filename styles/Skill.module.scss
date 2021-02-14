@@ -12,7 +12,8 @@
   position: relative;
   display: flex;
   height: 3px;
-  width: 500px;
+  width: 100%;
+  max-width: $max-width;
   margin: 5px 0;
 }
 

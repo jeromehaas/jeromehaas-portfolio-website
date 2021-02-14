@@ -1,9 +1,8 @@
 .wrapper {
-  border: 2px solid lightseagreen;
   min-height: 100vh;
   width: 100%;
   flex-direction: column;
-  justify-content: center;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   overflow-y: scroll;
 }

@@ -10,6 +10,8 @@ import Skill from '@/components/partials/Skill';
 import Dropdown from '@/components/partials/Dropdown';
 import CareerPoint from '@/components/partials/CareerPoint';
 import Box from '@/components/partials/Box';
+import InputField from '@/components/partials/InputField';
+import Reference from '@/components/partials/Reference';
 
 const websites = [
   {
@@ -111,7 +113,39 @@ const jobs = [
     duration: 'August 2009 - March 2013',
     description: 'After school, I started my career as a salesman at Globus. At this time I was very interested in observing body language and communication. During the training I learned how to communicate, how to mirror body language and the basics of good manners.'
   },
+];
+
+const tools = [
+  'VS Code',
+  'FileZilla', 
+  'JIRA', 
+  'Confluence', 
+  'LastPass',
+  'Dashlane',
+  'Office 365',
+  'Linux', 
+  'Windows', 
+  'MacoS',
+  'CyberDuck',
+  'Figma', 
+  'Illustrator', 
+  'Slack', 
+  'Postman',
+  'MAMP',
+  'Monday', 
+  'Typora', 
+  'Atom', 
+  'oh-my-zsh', 
+  'Vim',
+];
+
+const references = [
+  {
+    path: '../filenanme',
+    filename: 'resume.pfd'
+  },
 ]
+
 
 
 
@@ -120,6 +154,25 @@ export default function Home() {
   const [websiteDropdownStatus, setWebsiteDropdownStatus] = useState(false);
   const [npmPackageDropdownStatus, setNpmPackageDropdownStatus] = useState(false);
   const [codepenDropdownStatus, setCodepenDropdownStatus] = useState(false);
+
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleFirstname = (event) => { setFirstname(event.target.value) } 
+  const handleLastname = (event) => { setLastname(event.target.value) } 
+  const handleEmail = (event) => { setEmail(event.target.value) } 
+  const handleMessage = (event) => { setMessage(event.target.value) } 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('submit');
+    setFirstname('');
+    setLastname('');
+    setEmail('');
+    setMessage('');
+    
+  }
 
   return (
     <>
@@ -132,15 +185,20 @@ export default function Home() {
       
 
       <PageLayout>
-
         <Section id={"start"}>
-          <div id={styles.intro} className={styles.section}>
+          <div id={styles.start} className={styles.section}>
             <div id={styles.introWrapper} className={styles.sectionWrapper}>
               <img id={styles.portrait} src="/images/jeromehaas.png" alt="Jérôme Haas"/>
               <div className={styles.text}>
                 <h1>Jérôme Haas</h1>
                 <h3>Front-End Developer</h3>
-                <p>I am a passionate webdeveloper. I wrote my first line of code in 2016. Since then I have been fascinated by web development and am constantly educating myself in this area with the medium to long term goal of becoming a fullstack web developer. So far I am self-taught in HTML, CSS, JavaScript and PHP and I like nothing better than developing websites and web applications. I prefer to focus on custom-made and intelligent solutions for small and medium sized companies. In my spare time you can find me on running tracks, abroad on bagpacking trips or in front of my favorite IDE. </p>
+                <p>
+                  Hi, I'm Jérôme  - a Frontend Engineer experienced in JavaScript technologies. Experienced in React, TypeScript, MongoDB and SCSS and with some knowledge in Express, Koa and Angular.
+                  <br />
+                  I am a passionate developer with a quick perception. I prefer to work with frontend technologies in small teams. I like the challenge and there is nothing better for me than developing creative and solid solutions for the web.
+                  <br />
+                  In my spare time you can find me on running tracks, abroad on bagpacking trips or in front of my favorite IDE. 
+                </p>
               </div>
             </div>
           </div>
@@ -174,14 +232,39 @@ export default function Home() {
 
         <Section id={"tools"}>
           <h2>Tools</h2>
+          <div className={styles.boxContainer}>
+          {tools.map((tool, index) =>  <Box toolDetails={tool} /> )}
+          </div>
         </Section>
 
         <Section id={"contact"}>
-          <h2>Contact</h2>
+        <div id={styles.contact} className={styles.section}>
+            <div id={styles.contactWrapper} className={styles.sectionWrapper}>
+              <h2>Contact</h2>
+              <form onSubmit={handleSubmit}>
+                <InputField type={'text'} label={'Firstname'} width={'calc(50% - 20px)'} value={firstname} onChangeAction={handleFirstname}/>
+                <InputField type={'text'} label={'Lastname'} width={'calc(50% - 20px)'} value={lastname} onChangeAction={handleLastname}/>
+                <InputField type={'text'} label={'Email'}  width={'100%'} value={email} onChangeAction={handleEmail}/>
+                <InputField type={'textarea'} label={'Message'}  width={'100%'} value={message} onChangeAction={handleMessage}/>
+                <InputField type={'submit'} label={'Send'}  width={'100%'}/>
+              </form>
+            </div>
+          </div>
         </Section>
 
         <Section id={"references"}>
           <h2>References</h2>
+
+          <h3>Resume</h3>
+          <Reference filename={'resume.pdf'} path={'/references/resume.pdf'} />
+         
+          <h3>Job Reference</h3>
+          <Reference filename={'ref_arcmedia.pdf'} path={'/references/ref_arcmedia.pdf'} />
+          <Reference filename={'ref_swissint.pdf'} path={'/references/ref_swissint.pdf'} />
+          
+          <h3>Certificates</h3>
+          <Reference filename={'cert_psp.pdf'} path={'/references/cert_psp.pdf'} />
+          
         </Section>
 
 

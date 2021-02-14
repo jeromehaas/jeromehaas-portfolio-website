@@ -1,20 +1,23 @@
-#intro {
+@import 'variables';
+
+#start {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
+  flex-direction: row;
+  justify-content: flex-startd;
+  align-items: center;
+  height: calc(100vh - 140px);
   align-self: center;
-  height: 100%;
 }
 
 #introWrapper {
-
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: flex-start;
+  align-self: center;
 
   #portrait {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     margin-right: 50px;
   }
 
@@ -35,5 +38,21 @@
 
   }
   
-  
 }
+
+.boxContainer {
+  display: flex;
+  max-width: $max-width;
+  flex-wrap: wrap;
+}
+
+#contact form {
+  width: 100%;
+  max-width: $max-width;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+

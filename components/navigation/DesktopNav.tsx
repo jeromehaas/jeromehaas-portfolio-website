@@ -20,10 +20,10 @@ const DesktopNav: React.FunctionComponent<Props> = () => {
         <Link href="/#references"><a><img src="/icons/navigation/references.svg" alt="" /></a></Link>
       </div>
       <div className={styles.socialMediaLinks}>
-        <Link href="/#work"><a><img src="/icons/navigation/github.svg" alt="" /></a></Link>
-        <Link href="/#work"><a><img src="/icons/navigation/instagram.svg" alt="" /></a></Link>
-        <Link href="/#work"><a><img src="/icons/navigation/linkedin.svg" alt="" /></a></Link>
-        <Link href="/#work"><a><img src="/icons/navigation/youtube.svg" alt="" /></a></Link>
+        <Link href="https://www.github.com/jeromehaas"><a target="_blank"><img src="/icons/navigation/github.svg" alt="" /></a></Link>
+        <Link href="https://www.instagram.com/_jeromehaas/"><a target="_blank"><img src="/icons/navigation/instagram.svg" alt="" /></a></Link>
+        <Link href="https://www.linkedin.com/in/jeromehaas/"><a target="_blank"><img src="/icons/navigation/linkedin.svg" alt="" /></a></Link>
+        <Link href="https://www.youtube.com/channel/UCkuE7p-P2S2QPWsdzDzSxhQ"><a target="_blank"><img src="/icons/navigation/youtube.svg" alt="" /></a></Link>
       </div>
     </nav>
   );

@@ -10,12 +10,18 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   scroll-behavior: smooth;
-
+  cursor: url('../public/graphics/cursor.svg') 6 6, auto !important;
 }
 
 *::-webkit-scrollbar {
   display: none;
   -webkit-appearance: none;
+}
+
+*::selection {
+  background-color: $white;
+  color: $black;
+  opacity: 0.99;
 }
 
 h1, h2, h3, p, a {
@@ -34,6 +40,7 @@ h2 {
 h3 {
   font-size: 30px;
   font-weight: 700;
+  margin-bottom: 15px
 }
 
 p {

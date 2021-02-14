@@ -2,7 +2,7 @@
 
 #wrapper {
   height: 100vh;
-  border: 2px solid blue;
+  border-right: 1px solid $white;
   position: sticky;
   top: 0;
   display: flex;
@@ -17,7 +17,6 @@
     margin: 15px 5px; 
     transition: 0.1s ease;
     display: block;
-
 
     &:hover {
       transform: scale(1.2);

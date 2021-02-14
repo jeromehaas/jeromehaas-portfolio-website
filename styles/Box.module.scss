@@ -1,0 +1,14 @@
+@import 'variables';
+
+
+
+.wrapper {
+  width: 115px;
+  height: 114px;
+  border-bottom: 1px solid $white;
+  background-color: $dark-grey;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px 20px 0;
+}

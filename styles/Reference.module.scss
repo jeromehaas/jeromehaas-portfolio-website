@@ -1,0 +1,33 @@
+@import 'variables';
+
+.wrapper {
+
+  display: inline-block;
+  margin-bottom: 40px;
+
+  .upper {
+    width: 115px;
+    height: 115px;
+    border-bottom: 1px solid $white;
+    background-color: $dark-grey;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px 0 0;
+  }
+
+  .lower {
+    width: 115px;
+    background-color: $dark-grey;
+    padding: 7.5px 15px;
+
+    p {
+      font-size: 12px;
+    }
+  }
+
+  img {
+    width: 40px;
+  }
+
+}
