@@ -5,9 +5,10 @@ import PageWrapper from '@/components/layout/PageWrapper';
 import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
 import Link from 'next/link';
-
-
-
+import Skill from '@/components/partials/Skill';
+import Dropdown from '@/components/partials/Dropdown';
+import CareerPoint from '@/components/partials/CareerPoint';
+import Box from '@/components/partials/Box';
 
 export default function Home() {
   return (
@@ -39,6 +40,15 @@ export default function Home() {
 
         <Section id={"skills"}>
           <h2>Skills</h2>
+          <Skill name={"JavaScript"} value={85} />
+          <Skill name={"Sass"} value={80} />
+          <Skill name={"Linux"} value={75} />
+          <Skill name={"React"} value={60} />
+          <Skill name={"TypeScript"} value={35} />
+          <Skill name={"NodeJS"} value={30} />
+          <Skill name={"MongoDB"} value={25} />
+          <Skill name={"PostGres"} value={20} />
+
         </Section>
 
         <Section id={"work"}>
