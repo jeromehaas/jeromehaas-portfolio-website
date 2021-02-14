@@ -187,7 +187,7 @@ export default function Home() {
       <PageLayout>
         <Section id={"start"}>
           <div id={styles.start} className={styles.section}>
-            <div id={styles.introWrapper} className={styles.sectionWrapper}>
+            <div id={styles.startWrapper} className={styles.sectionWrapper}>
               <img id={styles.portrait} src="/images/jeromehaas.png" alt="Jérôme Haas"/>
               <div className={styles.text}>
                 <h1>Jérôme Haas</h1>

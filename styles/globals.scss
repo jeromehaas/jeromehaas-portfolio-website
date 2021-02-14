@@ -53,6 +53,25 @@ a {
   text-decoration: none;
 }
 
+@media screen and (max-width: 1000px) {
+  h1, h2 {
+    font-size: 40px;
+    font-weight: 300;
+  }
+  
+  h2 {
+    margin-bottom: 25px;
+  }
+  
+  h3 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+}
+
 @font-face {
   font-family: "Roboto";
   src: url("/fonts/roboto/Roboto-Black.ttf");
