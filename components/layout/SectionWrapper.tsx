@@ -1,14 +1,15 @@
 import React from 'react';
 import styles from '@/styles/SectionWrapper.module.scss';
 
-interface Props { }
+interface Props {
+  children: React.ReactNode
+}
 
-const SectionWrapper: React.FunctionComponent<Props> = () => {
-
+const SectionWrapper: React.FunctionComponent<Props> = ({ children }) => {
 
   return (
     <div className={styles.wrapper}>
-      <p>hello</p>
+      {children}
     </div>
   );
 

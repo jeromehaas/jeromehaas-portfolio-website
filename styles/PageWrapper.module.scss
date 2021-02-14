@@ -2,5 +2,10 @@
 
 #wrapper {
   border: 10px solid orangered;
-  background-color: $black; 
+  background-color: $black;
+  display: flex;
+  flex-direction: row;
+  overflow-Y: scroll;
+  height: 100vh;
+  overflow: scroll;
 }

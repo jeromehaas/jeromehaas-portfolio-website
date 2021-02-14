@@ -5,22 +5,35 @@
   margin: 0;
   padding: 0;
   font-family: Roboto;
+  box-sizing: border-box;
+  outline: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  -webkit-appearance: none;
 }
 
 h1, h2, h3, p, a {
   color: $white;
 }
 
-h1 {
+h1, h2 {
   font-size: 60px;
-}
-
-h2 {
-
+  font-weight: 300;
 }
 
 h3 {
+  font-size: 30px;
+  font-weight: 700;
+}
 
+p {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.5;
 }
 
 @font-face {
