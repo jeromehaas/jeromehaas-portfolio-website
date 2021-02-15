@@ -32,7 +32,7 @@ const InputFileld: React.FunctionComponent<Props> = ({ type, label, width, onCha
       case 'textarea':
         return (
           <div className={styles.textareaWrapper} style={{ width: width }}>
-            <textarea className={styles.inputField} type="textarea" value={value} onChange={onChangeAction} />
+            <textarea className={styles.inputField} value={value} onChange={onChangeAction} />
             <label className={styles.inputLabel}>{label}</label>
           </div>
         )
