@@ -179,9 +179,9 @@ export default function Home() {
               <img id={styles.portrait} src="/images/jeromehaas.png" alt="Jérôme Haas"/>
               <div className={styles.text}>
                 <h1>Jérôme Haas</h1>
-                <h3>Front-End Developer</h3>
+                <h3 data-text="Front-End Developer" >Front-End Developer</h3>
                 <p>
-                  Hi, I'm Jérôme  - a Frontend Engineer experienced in JavaScript technologies. Experienced in React, TypeScript, MongoDB and SCSS and with some knowledge in Express, Koa and Angular.
+                  Hi, I'm Jérôme - a Frontend Engineer experienced in JavaScript technologies. Experienced in React, TypeScript, MongoDB and SCSS and with some knowledge in Express, Koa and Angular.
                   <br />
                   I am a passionate developer with a quick perception. I prefer to work with frontend technologies in small teams. I like the challenge and there is nothing better for me than developing creative and solid solutions for the web.
                   <br />

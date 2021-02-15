@@ -9,7 +9,7 @@ const CareerPoint: React.FunctionComponent<Props> = ({ jobDetails }) => {
 
   return (
     <div className={styles.wrapper}>
-      <h3>{jobDetails.title}</h3>
+      <h3 data-text={jobDetails.title}>{jobDetails.title}</h3>
       <p>{jobDetails.metaData}</p>
       <p>{jobDetails.duration}</p>
       <p>{jobDetails.description}</p>
