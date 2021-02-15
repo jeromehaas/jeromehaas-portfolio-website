@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '@/styles/CareerPoint.module.scss';
 
 interface Props {
-  jobDetais: any;
+  jobDetails: any;
 }
 
 const CareerPoint: React.FunctionComponent<Props> = ({ jobDetails }) => {

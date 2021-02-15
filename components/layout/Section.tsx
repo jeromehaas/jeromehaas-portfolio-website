@@ -2,7 +2,8 @@ import React from 'react';
 import styles from '@/styles/Section.module.scss';
 
 interface Props {
-  children: React.ReactNode
+  children: React.ReactNode;
+  id: string;
 }
 
 const Section: React.FunctionComponent<Props> = ({ children, id }) => {

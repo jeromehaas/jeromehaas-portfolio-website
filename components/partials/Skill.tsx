@@ -2,8 +2,8 @@ import React from 'react';
 import styles from '@/styles/Skill.module.scss';
 
 interface Props {
-  value: number;
   name: string;
+  value: number;
 }
 
 const Skill: React.FunctionComponent<Props> = ({ name, value }) => {

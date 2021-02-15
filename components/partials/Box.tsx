@@ -7,13 +7,10 @@ interface Props {
 
 const Box: React.FunctionComponent<Props> = ({ toolDetails }) => {
 
-
   return (
-
     <div className={styles.wrapper}>
       <p>{toolDetails}</p>
     </div>
-
   );
 
 }

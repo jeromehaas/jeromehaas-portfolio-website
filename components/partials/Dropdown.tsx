@@ -9,9 +9,7 @@ interface Props {
   open: any;
 }
 
-
 const Dropdown: React.FunctionComponent<Props> = ({ name, items, status, open }) => {
-
 
   return (
     <div className={styles.wrapper} >
@@ -22,8 +20,8 @@ const Dropdown: React.FunctionComponent<Props> = ({ name, items, status, open })
       <div className={status ? cx(styles.lower, styles.active) : styles.lower}>
         {items.map((item, index) => {
           return (
-            <div className={styles.itemWrapper} >
-              <a href={item.link} className={styles.item} key={index}>{item.name}</a>
+            <div className={styles.itemWrapper} key={index}>
+              <a href={item.link} className={styles.item}>{item.name}</a>
               <p className={styles.item} key={index}>{item.date}</p>
             </div>
           )

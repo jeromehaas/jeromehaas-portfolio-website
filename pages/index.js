@@ -139,16 +139,6 @@ const tools = [
   'Vim',
 ];
 
-const references = [
-  {
-    path: '../filenanme',
-    filename: 'resume.pfd'
-  },
-]
-
-
-
-
 export default function Home() {
 
   const [websiteDropdownStatus, setWebsiteDropdownStatus] = useState(false);
@@ -171,7 +161,6 @@ export default function Home() {
     setLastname('');
     setEmail('');
     setMessage('');
-    
   }
 
   return (
@@ -179,11 +168,10 @@ export default function Home() {
       <Head>
         <title>Jérôme Haas |  Front-End Developer</title>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preload" href="/fonts/EBGaramond/EBGaramond-Regular.ttf" as="font" crossOrigin="" />
-        <link rel="preload" href="/fonts/EBGaramond/EBGaramond-Medium.ttf" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/roboto/Roboto-Light.ttf" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/roboto/Roboto-Bold.ttf" as="font" crossOrigin="" />
       </Head>
       
-
       <PageLayout>
         <Section id={"start"}>
           <div id={styles.start} className={styles.section}>
@@ -204,7 +192,6 @@ export default function Home() {
           </div>
         </Section>
 
-
         <Section id={"skills"}>
           <h2>Skills</h2>
           <Skill name={"JavaScript"} value={85} />
@@ -217,7 +204,6 @@ export default function Home() {
           <Skill name={"PostGres"} value={20} />
         </Section>
 
-
         <Section id={"work"}>
           <h2>Work</h2>
           <Dropdown name={"Websites"}  items={websites} status={websiteDropdownStatus} open={() => setWebsiteDropdownStatus(!websiteDropdownStatus)}/>
@@ -227,13 +213,13 @@ export default function Home() {
 
         <Section id={"career"}>
           <h2>Career</h2>
-          {jobs.map((job, index) =>  <CareerPoint jobDetails={job} /> )}
+          {jobs.map((job, index) =>  <CareerPoint jobDetails={job} key={index} /> )}
         </Section>
 
         <Section id={"tools"}>
           <h2>Tools</h2>
           <div className={styles.boxContainer}>
-          {tools.map((tool, index) =>  <Box toolDetails={tool} /> )}
+          {tools.map((tool, index) =>  <Box toolDetails={tool} key={index} /> )}
           </div>
         </Section>
 
@@ -254,26 +240,15 @@ export default function Home() {
 
         <Section id={"references"}>
           <h2>References</h2>
-
           <h3>Resume</h3>
           <Reference filename={'resume.pdf'} path={'/references/resume.pdf'} />
-         
           <h3>Job Reference</h3>
           <Reference filename={'ref_arcmedia.pdf'} path={'/references/ref_arcmedia.pdf'} />
           <Reference filename={'ref_swissint.pdf'} path={'/references/ref_swissint.pdf'} />
-          
           <h3>Certificates</h3>
           <Reference filename={'cert_psp.pdf'} path={'/references/cert_psp.pdf'} />
-          
         </Section>
-
-
-
-
-
-
-
-
+        
       </PageLayout>
     </>
   )
