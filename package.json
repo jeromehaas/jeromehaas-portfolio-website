@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "commit": "cz"
+    "commit": "cz",
+    "export": "next export"
   },
   "dependencies": {
     "classnames": "^2.2.6",
