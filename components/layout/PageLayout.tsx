@@ -5,16 +5,18 @@ import DesktopNav from '@/components/navigation/DesktopNav';
 import Notifier from '@/components/partials/Notifier';
 
 interface Props {
-  children: React.ReactNode
+  children: React.ReactNode;
+  notifierStatus: string;
+  notifierContent: string;
 }
 
-const PageLayout: React.FunctionComponent<Props> = ({ children }) => {
+const PageLayout: React.FunctionComponent<Props> = ({ children, notifierStatus, notifierContent }) => {
 
 
   return (
 
     <PageWrapper>
-      <Notifier />
+      <Notifier notifierStatus={notifierStatus} notifierContent={notifierContent} />
       <DesktopNav />
       <SectionWrapper>
         {children}

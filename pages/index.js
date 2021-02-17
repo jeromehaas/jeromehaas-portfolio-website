@@ -163,7 +163,17 @@ export default function Home() {
       setLastname('');
       setEmail('');
       setMessage('');
+      setNotifierContent('Your message has been sent successfully!')
+      setNotifierStatus('active');
+      setTimeout(() => {
+        setNotifierStatus('hidden');
+      }, 3000);
     } catch (error) {
+      setNotifierContent('Sorry, something went wrong... Please contact me via email!')
+      setNotifierStatus('active');
+      setTimeout(() => {
+        setNotifierStatus('hidden');
+      }, 3000);
       console.log(error);
     }
   }
@@ -177,7 +187,7 @@ export default function Home() {
         <link rel="preload" href="/fonts/roboto/Roboto-Bold.ttf" as="font" crossOrigin="" />
       </Head>
       
-      <PageLayout>
+      <PageLayout notifierStatus={notifierStatus} notifierContent={notifierContent}>
         <Section id={"start"}>
           <div id={styles.start} className={styles.section}>
             <div id={styles.startWrapper} className={styles.sectionWrapper}>
@@ -213,7 +223,7 @@ export default function Home() {
           <h2>Work</h2>
           <Dropdown name={"Websites"}  items={websites} status={websiteDropdownStatus} open={() => setWebsiteDropdownStatus(!websiteDropdownStatus)}/>
           <Dropdown name={"NPM Packages"} items={npmPackages} status={npmPackageDropdownStatus} open={() => setNpmPackageDropdownStatus(!npmPackageDropdownStatus)} />
-          <Dropdown name={"Codepens"} items={codepens} status={codepenDropdownStatus} open={() => setCodepenDropdownStatus(!codepenDropdownStatus)} />
+          {/* <Dropdown name={"Codepens"} items={codepens} status={codepenDropdownStatus} open={() => setCodepenDropdownStatus(!codepenDropdownStatus)} /> */}
           </Section>
 
         <Section id={"career"}>

@@ -5,14 +5,18 @@
 #wrapper {
   position: absolute;
   top: 50px;
-  right: 50px;
+  right: -300px;
   max-width: 300px;
   background-color: $white;
   color: $black;
   padding: 15px 30px;
   opacity: 1;
+  transition: all 1s ease;
 
   #messageText {
     color: $black;
   }
+}
+#wrapper.active {
+  right: 50px;
 }
