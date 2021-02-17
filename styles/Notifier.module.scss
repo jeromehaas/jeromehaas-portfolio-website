@@ -1,0 +1,18 @@
+@import 'variables';
+
+
+
+#wrapper {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  max-width: 300px;
+  background-color: $white;
+  color: $black;
+  padding: 15px 30px;
+  opacity: 1;
+
+  #messageText {
+    color: $black;
+  }
+}
