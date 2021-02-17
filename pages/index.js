@@ -157,7 +157,6 @@ export default function Home() {
   const handleSubmit = (event) => {
     try {
       event.preventDefault();
-      console.log('submit');
       sendMail(firstname, lastname, email, message)
       setFirstname('');
       setLastname('');
@@ -256,7 +255,8 @@ export default function Home() {
         <Section id={"references"}>
           <h2>References</h2>
           <h3 data-text="Resume">Resume</h3>
-          <Reference filename={'resume.pdf'} path={'/references/resume.pdf'} />
+          <Reference filename={'resume_de.pdf'} path={'/references/resume_de.pdf'} />
+          <Reference filename={'resumeen.pdf'} path={'/references/resume_en.pdf'} />
           <h3 data-text="Job Reference">Job Reference</h3>
           <Reference filename={'ref_arcmedia.pdf'} path={'/references/ref_arcmedia.pdf'} />
           <Reference filename={'ref_swissint.pdf'} path={'/references/ref_swissint.pdf'} />

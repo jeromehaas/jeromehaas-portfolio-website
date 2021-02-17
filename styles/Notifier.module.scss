@@ -12,6 +12,7 @@
   padding: 15px 30px;
   opacity: 1;
   transition: all 1s ease;
+  z-index: 5;
 
   #messageText {
     color: $black;
