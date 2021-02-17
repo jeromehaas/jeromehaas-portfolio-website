@@ -12,6 +12,8 @@ import CareerPoint from '@/components/partials/CareerPoint';
 import Box from '@/components/partials/Box';
 import InputField from '@/components/partials/InputField';
 import Reference from '@/components/partials/Reference';
+import { sendMail } from '@/services/email.js';
+
 
 const websites = [
   {
@@ -27,13 +29,8 @@ const websites = [
   {
     link: 'https://kreuz-abtwil.ch',
     name: 'kreut-abtwil.ch',
-    date: '06.2019'
-  },
-  {
-    link: 'https://pomodoro-counter.ch',
-    name: 'pomodoro-counter.ch',
-    date: '12.2019'
-  },
+    date: '06.2019' }, { link: 'https://pomodoro-counter.ch', name: 'pomodoro-counter.ch', date: '12.2019'
+      },
   {
     link: 'https://decom.ch',
     name: 'decom.ch',
@@ -47,8 +44,7 @@ const npmPackages = [
     name: 'github-cube',
     date: '09.2020'
   },
-]
-
+];
 
 const codepens= [
   {
@@ -154,13 +150,22 @@ export default function Home() {
   const handleLastname = (event) => { setLastname(event.target.value) } 
   const handleEmail = (event) => { setEmail(event.target.value) } 
   const handleMessage = (event) => { setMessage(event.target.value) } 
+
+  const [notifierStatus, setNotifierStatus] = useState('hidden');
+  const [notifierContent, setNotifierContent] = useState('hello world');
+  
   const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('submit');
-    setFirstname('');
-    setLastname('');
-    setEmail('');
-    setMessage('');
+    try {
+      event.preventDefault();
+      console.log('submit');
+      sendMail(firstname, lastname, email, message)
+      setFirstname('');
+      setLastname('');
+      setEmail('');
+      setMessage('');
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -240,12 +245,12 @@ export default function Home() {
 
         <Section id={"references"}>
           <h2>References</h2>
-          <h3>Resume</h3>
+          <h3 data-text="Resume">Resume</h3>
           <Reference filename={'resume.pdf'} path={'/references/resume.pdf'} />
-          <h3>Job Reference</h3>
+          <h3 data-text="Job Reference">Job Reference</h3>
           <Reference filename={'ref_arcmedia.pdf'} path={'/references/ref_arcmedia.pdf'} />
           <Reference filename={'ref_swissint.pdf'} path={'/references/ref_swissint.pdf'} />
-          <h3>Certificates</h3>
+          <h3 data-text="Front-End Developer"data-text="Certificates">Certificates</h3>
           <Reference filename={'cert_psp.pdf'} path={'/references/cert_psp.pdf'} />
         </Section>
         
