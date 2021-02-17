@@ -1,4 +1,4 @@
-const BASE_URL = 'https://167.99.141.165:3005';
+const BASE_URL = 'https://devcube.io:3005';
 
 const sendMail = (firstname, lastname, email, message) => {
   try {
