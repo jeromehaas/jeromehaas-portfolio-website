@@ -14,7 +14,7 @@
   transform: translate(-50%, -50%);
   box-shadow: 0 0 1px 10px $black;
   border-radius: 30px;
-
+  overflow-x: hidden;
   }
 
   @media screen and (max-width: 1600px),

@@ -12,7 +12,7 @@ const Reference: React.FunctionComponent<Props> = ({ filename, path }) => {
 
     < a href={path} className={styles.wrapper} download >
       <div className={styles.upper}>
-        <img src="/icons/other/reference.svg" alt="" width="104" height="142" />
+        <img src="/images/reference.svg" alt="" width="104" height="142" />
       </div>
       <div className={styles.lower}>
         <p>{filename}</p>
