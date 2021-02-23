@@ -61,4 +61,7 @@
 .inputField[type=submit] {
     text-align: center;
     padding: 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }

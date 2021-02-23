@@ -32,7 +32,7 @@ const websites = [
     date: '06.2019' 
   }, 
   { 
-    link: 'https://pomodoro-counter.ch', 
+    link: 'https://pomodoro-counter.com', 
     name: 'pomodoro-counter.ch', 
     date: '12.2019'
   },
