@@ -23,14 +23,19 @@ const websites = [
   },
   {
     link: 'https://waterisahumanright.ch',
-    name: 'waterisahumanright',
+    name: 'waterisahumanright.ch',
     date: '02.2020'
   },
   {
     link: 'https://kreuz-abtwil.ch',
-    name: 'kreut-abtwil.ch',
-    date: '06.2019' }, { link: 'https://pomodoro-counter.ch', name: 'pomodoro-counter.ch', date: '12.2019'
-      },
+    name: 'kreuz-abtwil.ch',
+    date: '06.2019' 
+  }, 
+  { 
+    link: 'https://pomodoro-counter.ch', 
+    name: 'pomodoro-counter.ch', 
+    date: '12.2019'
+  },
   {
     link: 'https://decom.ch',
     name: 'decom.ch',

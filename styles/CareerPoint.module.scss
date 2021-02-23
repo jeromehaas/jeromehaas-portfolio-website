@@ -24,3 +24,13 @@
   top: 0px;
   background-color: $black;
 }
+@media screen and (max-width: 750px) {
+  .wrapper {
+    padding-bottom: 40px;
+    max-width: $max-width;
+    padding-left: 30px;
+    margin-left: 0px;
+    position: relative;
+    border-left: 1px solid $white;
+  }
+}

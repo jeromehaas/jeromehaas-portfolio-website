@@ -21,7 +21,7 @@ const Dropdown: React.FunctionComponent<Props> = ({ name, items, status, open })
         {items.map((item, index) => {
           return (
             <div className={styles.itemWrapper} key={index}>
-              <a href={item.link} className={styles.item}>{item.name}</a>
+              <a href={item.link} target="_blank" className={styles.item}>{item.name}</a>
               <p className={styles.item} key={index}>{item.date}</p>
             </div>
           )

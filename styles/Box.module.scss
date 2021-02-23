@@ -1,7 +1,4 @@
 @import 'variables';
-
-
-
 .wrapper {
   width: 115px;
   height: 114px;
@@ -11,4 +8,9 @@
   justify-content: center;
   align-items: center;
   margin: 0 20px 20px 0;
+}
+@media screen and (max-width: 750px) {
+  .wrapper {
+    margin: 0 15px 15px 0;
+  }
 }

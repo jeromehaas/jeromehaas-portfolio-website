@@ -21,3 +21,19 @@
 #wrapper.active {
   right: 50px;
 }
+@media screen and (max-width: 1000px) {
+
+  #wrapper {
+    top: 150px;
+    max-width: 200px;
+
+    p {
+      font-size: 12px;
+    }
+  }
+
+  #wrapper.active {
+    right: 25px;
+  }
+
+}
