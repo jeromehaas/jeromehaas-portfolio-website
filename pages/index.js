@@ -17,6 +17,11 @@ import { sendMail } from '@/services/email.js';
 
 const websites = [
   {
+    link: 'https://calm-thicket-68582.herokuapp.com/',
+    name: 'people-of-github.com',
+    date: '02.2021'
+  },
+  {
     link: 'https://hellergrafik.ch',
     name: 'hellergrafik.ch',
     date: '09.2020'
