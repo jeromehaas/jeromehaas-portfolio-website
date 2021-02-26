@@ -17,7 +17,7 @@ import { sendMail } from '@/services/email.js';
 
 const websites = [
   {
-    link: 'https://calm-thicket-68582.herokuapp.com/',
+    link: 'https://people-of-github.vercel.app/user/jeromehaas',
     name: 'people-of-github.com',
     date: '02.2021'
   },
