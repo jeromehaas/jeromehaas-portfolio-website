@@ -17,6 +17,11 @@ import { sendMail } from '@/services/email.js';
 
 const websites = [
   {
+    link: 'https://reihe8.ch',
+    name: 'reihe8.ch',
+    date: '03.2021'
+  },
+  {
     link: 'https://people-of-github.vercel.app/user/jeromehaas',
     name: 'people-of-github.com',
     date: '02.2021'
@@ -58,9 +63,9 @@ const npmPackages = [
 
 const codepens= [
   {
-    link: 'https://www.npmjs.com/package/github-cube',
-    name: 'github-cube',
-    date: '09.2020',
+    link: 'https://codepen.io/jeromehaas/pen/MWbMvMY?editors=1100',
+    name: 'Word Carousel',
+    date: '03.2021',
   },
 ];
 
@@ -242,7 +247,7 @@ export default function Home() {
           <h2>Work</h2>
           <Dropdown name={"Websites"}  items={websites} status={websiteDropdownStatus} open={() => setWebsiteDropdownStatus(!websiteDropdownStatus)}/>
           <Dropdown name={"NPM Packages"} items={npmPackages} status={npmPackageDropdownStatus} open={() => setNpmPackageDropdownStatus(!npmPackageDropdownStatus)} />
-          {/* <Dropdown name={"Codepens"} items={codepens} status={codepenDropdownStatus} open={() => setCodepenDropdownStatus(!codepenDropdownStatus)} /> */}
+          <Dropdown name={"Codepens"} items={codepens} status={codepenDropdownStatus} open={() => setCodepenDropdownStatus(!codepenDropdownStatus)} />
           </Section>
 
         <Section id={"career"}>
