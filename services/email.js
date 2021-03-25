@@ -3,7 +3,7 @@ const BASE_URL = 'https://devcube.io';
 const sendMail = (firstname, lastname, email, message) => {
   try {
 
-    return fetch(`${BASE_URL}/contactEmail`, {
+    return fetch(`${BASE_URL}/jeromehaas`, {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
