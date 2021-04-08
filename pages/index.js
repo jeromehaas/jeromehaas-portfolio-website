@@ -286,6 +286,7 @@ export default function Home() {
           <Reference filename={'ref_arcmedia.pdf'} path={'/references/ref_arcmedia.pdf'} />
           <Reference filename={'ref_swissint.pdf'} path={'/references/ref_swissint.pdf'} />
           <h3 data-text="Front-End Developer"data-text="Certificates">Certificates</h3>
+          <Reference filename={'cert_fullstack.pdf'} path={'/references/cert_fullstack.pdf'} />
           <Reference filename={'cert_psp.pdf'} path={'/references/cert_psp.pdf'} />
         </Section>
         
