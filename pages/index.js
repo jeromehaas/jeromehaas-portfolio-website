@@ -16,6 +16,12 @@ import { sendMail } from '@/services/email.js';
 
 
 const websites = [
+
+  {
+    link: 'https://sesame-ai.tech',
+    name: 'sesame-ai.tech',
+    date: '04.2021'
+  },
   {
     link: 'https://reihe8.ch',
     name: 'reihe8.ch',
