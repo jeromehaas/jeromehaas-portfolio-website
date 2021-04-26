@@ -17,7 +17,12 @@ import { sendMail } from '@/services/email.js';
 
 const websites = [
 
-  {
+   {
+    link: 'https://yellowreach.io',
+    name: 'yellowreach.io',
+    date: '05.2021'
+  },
+   {
     link: 'https://sesame-ai.tech',
     name: 'sesame-ai.tech',
     date: '04.2021'
@@ -78,6 +83,12 @@ const codepens= [
 const jobs = [
   {
     title: 'Front-End Developer',
+    metaData: 'Calydo | Switzerland, Zug',
+    duration: '2021 - Today',
+    description: 'As an integrated agency for marketing and communication, Calydo supports companies in increasing the relevance of experience, offer and content.'
+  },
+  {
+    title: 'Front-End Developer (Opensource-Project)',
     metaData: 'Sesame | Spain, Barcelona',
     duration: '2020 - Today',
     description: 'Sesame AI is an enterprise access management tool harnessing the power of machine learning and computer vision. In a team of six developers, my responsibilities was to develop the front-end for the admin dashboard with NextJS, SASS and TypeScript. Also I was in charge for planning and defining the state management wit Redux and setting up an email-server to deliver automated emails.'
