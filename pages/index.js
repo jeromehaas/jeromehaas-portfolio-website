@@ -13,6 +13,8 @@ import Box from '@/components/partials/Box';
 import InputField from '@/components/partials/InputField';
 import Reference from '@/components/partials/Reference';
 import { sendMail } from '@/services/email.js';
+import { gql } from "@apollo/client";
+import client from "../apollo-client";
 
 
 const websites = [
@@ -173,7 +175,9 @@ const tools = [
   'Vim',
 ];
 
-export default function Home() {
+export default function Home({ countries }) {
+
+  console.log(countries);
 
   const [websiteDropdownStatus, setWebsiteDropdownStatus] = useState(false);
   const [npmPackageDropdownStatus, setNpmPackageDropdownStatus] = useState(false);
@@ -192,10 +196,6 @@ export default function Home() {
   const [notifierStatus, setNotifierStatus] = useState('hidden');
   const [notifierContent, setNotifierContent] = useState('');
 
-
-
-
-  
   const handleSubmit = (event) => {
     try {
       event.preventDefault();
@@ -310,4 +310,24 @@ export default function Home() {
       </PageLayout>
     </>
   )
+}
+
+export async function getStaticProps() {
+  const {data} = await client.query({
+    query: gql`
+      query Countries {
+        countries {
+          code 
+          name
+          emoji
+        }
+      }
+    `
+  });
+
+  return {
+    props: {
+      countries: data.countries.slice(0, 4),
+    }
+  }
 }
