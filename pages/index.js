@@ -175,9 +175,9 @@ const tools = [
   'Vim',
 ];
 
-export default function Home({ countries }) {
+export default function Home({ work }) {
 
-  console.log(countries);
+  console.log(work);
 
   const [websiteDropdownStatus, setWebsiteDropdownStatus] = useState(false);
   const [npmPackageDropdownStatus, setNpmPackageDropdownStatus] = useState(false);
@@ -315,19 +315,17 @@ export default function Home({ countries }) {
 export async function getStaticProps() {
   const {data} = await client.query({
     query: gql`
-      query Countries {
-        countries {
-          code 
-          name
-          emoji
-        }
+     query GetWork {
+       entries (section: "work", limit: 2, orderBy: "dateCreated DESC") {
+        title
       }
+    }
     `
   });
 
   return {
     props: {
-      countries: data.countries.slice(0, 4),
+      work: data,
     }
   }
 }
