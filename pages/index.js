@@ -74,7 +74,7 @@ const npmPackages = [
   },
 ];
 
-const codepens= [
+const codepens = [
   {
     link: 'https://codepen.io/jeromehaas/pen/MWbMvMY?editors=1100',
     name: 'Word Carousel',
@@ -175,9 +175,9 @@ const tools = [
   'Vim',
 ];
 
-export default function Home({ work }) {
+export default function Home({ data }) {
 
-  console.log(work);
+  console.log(data);
 
   const [websiteDropdownStatus, setWebsiteDropdownStatus] = useState(false);
   const [npmPackageDropdownStatus, setNpmPackageDropdownStatus] = useState(false);
@@ -222,7 +222,7 @@ export default function Home({ work }) {
   return (
     <>
       <Head>
-        <title>Jérôme Haas |  Front-End Developer</title>
+        <title>{data.start[0].fullName} | {data.start[0].jobTitle}</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preload" href="/fonts/roboto/Roboto-Light.ttf" as="font" crossOrigin="" />
         <link rel="preload" href="/fonts/roboto/Roboto-Bold.ttf" as="font" crossOrigin="" />
@@ -234,21 +234,17 @@ export default function Home({ work }) {
             <div id={styles.startWrapper} className={styles.sectionWrapper}>
               <img id={styles.portrait} src="/images/jeromehaas.png" alt="Jérôme Haas"/>
               <div className={styles.text}>
-                <h1>Jérôme Haas</h1>
-                <h3 data-text="Front-End Developer" >Front-End Developer</h3>
+                <h1>{data.start[0].fullName}</h1>
+                <h3 data-text="Front-End Developer">{data.start[0].jobTitle}</h3>
                 <p>
-                  Hi, I'm Jérôme - a front-end developer experienced in JavaScript technologies. Experienced in React, TypeScript, MongoDB and SCSS and with some knowledge in Express, Koa and Angular.
-                  <br />
-                  I am a passionate developer with a quick perception. I prefer to work with frontend technologies in small teams. I like the challenge and there is nothing better for me than developing creative and solid solutions for the web.
-                  <br />
-                  In my spare time you can find me on running tracks, abroad on bagpacking trips or in front of my favorite IDE. 
+                  {data.start[0].introText}
                 </p>
               </div>
             </div>
           </div>
         </Section>
 
-        <Section id={"skills"}>
+        {/* <Section id={"skills"}>
           <h2>Skills</h2>
           <Skill name={"JavaScript"} value={85} />
           <Skill name={"Sass"} value={80} />
@@ -258,6 +254,13 @@ export default function Home({ work }) {
           <Skill name={"NodeJS"} value={30} />
           <Skill name={"MongoDB"} value={25} />
           <Skill name={"PostGres"} value={20} />
+        </Section> */}
+
+        <Section id={"skills"}>
+          <h2>Skills</h2>
+          {data.skills.map((skill) => (
+            <Skill name={skill.technology} value={skill.skillLevel} key={skill.technology} />
+          ))}
         </Section>
 
         <Section id={"work"}>
@@ -313,19 +316,95 @@ export default function Home({ work }) {
 }
 
 export async function getStaticProps() {
-  const {data} = await client.query({
+  const work = await client.query({
     query: gql`
-     query GetWork {
-       entries (section: "work", limit: 2, orderBy: "dateCreated DESC") {
-        title
+      {
+        entries (section: "work") {
+          title
+        }
       }
-    }
+    `
+  });
+  const references = await client.query({
+    query: gql`
+      {
+        entries (section: "references") {
+          title
+        }
+      }
+    `
+  });
+  const skills = await client.query({
+    query: gql`
+      {
+        entries (section: "skill", orderBy: "skillLevel DESC") {
+          ...on skill_skill_Entry {
+            technology,
+            skillLevel
+          }
+        }
+      }
+    `
+  });
+  const career = await client.query({
+    query: gql`
+      {
+        entries (section: "career") {
+          title
+        }
+      }
+    `
+  });
+  const tools = await client.query({
+    query: gql`
+      {
+        entries (section: "tools") {
+          title
+        }
+      }
+    `
+  });
+  const start = await client.query({
+    query: gql`
+      {
+        entries (section: "start") {
+          title
+          ...on start_start_Entry {
+            fullName,
+            jobTitle,
+            introText
+          }
+        }
+      }
+    `
+  });
+  const socialMedia = await client.query({
+    query: gql`
+      {
+        entries (section: "socialMedia") {
+          title
+          ...on socialMedia_socialMedia_Entry {
+            githubLink,
+            youtubeLink,
+            linkedinLink,
+            instagramLink
+          }
+        }
+      }
     `
   });
 
   return {
     props: {
-      work: data,
+     data: {
+        start: start.data.entries,
+        skills: skills.data.entries,
+        work: work.data.entries,
+        career: career.data.entries,
+        tools: tools.data.entries,
+        references: references.data.entries,
+        socialMedia: socialMedia.data.entries,
+      }
     }
   }
 }
