@@ -244,18 +244,6 @@ export default function Home({ data }) {
           </div>
         </Section>
 
-        {/* <Section id={"skills"}>
-          <h2>Skills</h2>
-          <Skill name={"JavaScript"} value={85} />
-          <Skill name={"Sass"} value={80} />
-          <Skill name={"Linux"} value={75} />
-          <Skill name={"React"} value={60} />
-          <Skill name={"TypeScript"} value={35} />
-          <Skill name={"NodeJS"} value={30} />
-          <Skill name={"MongoDB"} value={25} />
-          <Skill name={"PostGres"} value={20} />
-        </Section> */}
-
         <Section id={"skills"}>
           <h2>Skills</h2>
           {data.skills.map((skill) => (
@@ -265,9 +253,9 @@ export default function Home({ data }) {
 
         <Section id={"work"}>
           <h2>Work</h2>
-          <Dropdown name={"Websites"}  items={websites} status={websiteDropdownStatus} open={() => setWebsiteDropdownStatus(!websiteDropdownStatus)}/>
-          <Dropdown name={"NPM Packages"} items={npmPackages} status={npmPackageDropdownStatus} open={() => setNpmPackageDropdownStatus(!npmPackageDropdownStatus)} />
-          <Dropdown name={"Codepens"} items={codepens} status={codepenDropdownStatus} open={() => setCodepenDropdownStatus(!codepenDropdownStatus)} />
+          <Dropdown name={"Websites"}  items={data.work.websites} status={websiteDropdownStatus} open={() => setWebsiteDropdownStatus(!websiteDropdownStatus)}/>
+          <Dropdown name={"NPM Packages"} items={data.work.npmPackages} status={npmPackageDropdownStatus} open={() => setNpmPackageDropdownStatus(!npmPackageDropdownStatus)} />
+          <Dropdown name={"Codepens"} items={data.work.codepens} status={codepenDropdownStatus} open={() => setCodepenDropdownStatus(!codepenDropdownStatus)} />
           </Section>
 
         <Section id={"career"}>
@@ -321,6 +309,12 @@ export async function getStaticProps() {
       {
         entries (section: "work") {
           title
+          ...on work_work_Entry {
+            category,
+            displayName, 
+            targetUrl, 
+            dateSinceOnline
+          }
         }
       }
     `
@@ -399,7 +393,12 @@ export async function getStaticProps() {
      data: {
         start: start.data.entries,
         skills: skills.data.entries,
-        work: work.data.entries,
+        // work: work.data.entries,
+        work: {
+          websites: work.data.entries.filter(item => { return item.category === 'website'}),
+          codepens: work.data.entries.filter(item => { return item.category === 'codepen'}),
+          npmPackages: work.data.entries.filter(item => { return item.category === 'npmPackage'})
+        },
         career: career.data.entries,
         tools: tools.data.entries,
         references: references.data.entries,
