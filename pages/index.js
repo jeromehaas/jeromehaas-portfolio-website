@@ -16,72 +16,6 @@ import { sendMail } from '@/services/email.js';
 import { gql } from "@apollo/client";
 import client from "../apollo-client";
 
-
-const websites = [
-
-   {
-    link: 'https://yellowreach.io',
-    name: 'yellowreach.io',
-    date: '05.2021'
-  },
-   {
-    link: 'https://sesame-ai.tech',
-    name: 'sesame-ai.tech',
-    date: '04.2021'
-  },
-  {
-    link: 'https://reihe8.ch',
-    name: 'reihe8.ch',
-    date: '03.2021'
-  },
-  {
-    link: 'https://people-of-github.vercel.app/user/jeromehaas',
-    name: 'people-of-github.com',
-    date: '02.2021'
-  },
-  {
-    link: 'https://hellergrafik.ch',
-    name: 'hellergrafik.ch',
-    date: '09.2020'
-  },
-  {
-    link: 'https://waterisahumanright.ch',
-    name: 'waterisahumanright.ch',
-    date: '02.2020'
-  },
-  {
-    link: 'https://kreuz-abtwil.ch',
-    name: 'kreuz-abtwil.ch',
-    date: '06.2019' 
-  }, 
-  { 
-    link: 'https://pomodoro-counter.com', 
-    name: 'pomodoro-counter.ch', 
-    date: '12.2019'
-  },
-  {
-    link: 'https://decom.ch',
-    name: 'decom.ch',
-    date: '06.2018'
-  },
-];
-
-const npmPackages = [
-  {
-    link: 'https://www.npmjs.com/package/github-cube',
-    name: 'github-cube',
-    date: '09.2020'
-  },
-];
-
-const codepens = [
-  {
-    link: 'https://codepen.io/jeromehaas/pen/MWbMvMY?editors=1100',
-    name: 'Word Carousel',
-    date: '03.2021',
-  },
-];
-
 const jobs = [
   {
     title: 'Front-End Developer',
@@ -253,14 +187,14 @@ export default function Home({ data }) {
 
         <Section id={"work"}>
           <h2>Work</h2>
-          <Dropdown name={"Websites"}  items={data.work.websites} status={websiteDropdownStatus} open={() => setWebsiteDropdownStatus(!websiteDropdownStatus)}/>
-          <Dropdown name={"NPM Packages"} items={data.work.npmPackages} status={npmPackageDropdownStatus} open={() => setNpmPackageDropdownStatus(!npmPackageDropdownStatus)} />
-          <Dropdown name={"Codepens"} items={data.work.codepens} status={codepenDropdownStatus} open={() => setCodepenDropdownStatus(!codepenDropdownStatus)} />
+            <Dropdown name={"Websites"}  items={data.work.websites} status={websiteDropdownStatus} open={() => setWebsiteDropdownStatus(!websiteDropdownStatus)}/>
+            <Dropdown name={"NPM Packages"} items={data.work.npmPackages} status={npmPackageDropdownStatus} open={() => setNpmPackageDropdownStatus(!npmPackageDropdownStatus)} />
+            <Dropdown name={"Codepens"} items={data.work.codepens} status={codepenDropdownStatus} open={() => setCodepenDropdownStatus(!codepenDropdownStatus)} />
           </Section>
 
         <Section id={"career"}>
           <h2>Career</h2>
-          {jobs.map((job, index) =>  <CareerPoint jobDetails={job} key={index} /> )}
+          {data.career.map((job, index) =>  <CareerPoint jobDetails={job} key={index} /> )}
         </Section>
 
         <Section id={"tools"}>
@@ -343,8 +277,16 @@ export async function getStaticProps() {
   const career = await client.query({
     query: gql`
       {
-        entries (section: "career") {
+        entries (section: "career", orderBy: "durationStart DESC") {
           title
+          ...on career_career_Entry {
+            position, 
+            companyName, 
+            location,
+            durationStart, 
+            durationEnd, 
+            description
+          }
         }
       }
     `
