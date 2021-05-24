@@ -16,75 +16,6 @@ import { sendMail } from '@/services/email.js';
 import { gql } from "@apollo/client";
 import client from "../apollo-client";
 
-const jobs = [
-  {
-    title: 'Front-End Developer',
-    metaData: 'Calydo | Switzerland, Zug',
-    duration: '2021 - Today',
-    description: 'As an integrated agency for marketing and communication, Calydo supports companies in increasing the relevance of experience, offer and content.'
-  },
-  {
-    title: 'Front-End Developer (Opensource-Project)',
-    metaData: 'Sesame | Spain, Barcelona',
-    duration: '2020 - Today',
-    description: 'Sesame AI is an enterprise access management tool harnessing the power of machine learning and computer vision. In a team of six developers, my responsibilities was to develop the front-end for the admin dashboard with NextJS, SASS and TypeScript. Also I was in charge for planning and defining the state management wit Redux and setting up an email-server to deliver automated emails.'
-  },
-  {
-    title: 'Codeworks Bootcamp',
-    metaData: 'Codeworks | Spain, Barcelona',
-    duration: '2020 - Today',
-    description: 'Codeworks is an immersive coding bootcamp focusing on JavaScript and web development. In 12 weeks of full-time training and over 1000 hours of coding and three projects, I deepened my knowledge in JavaScript, React, TypeScript, NodeJS, Express and many other technologies and frameworks.'
-  },
-  {
-    title: 'Front-End Developer',
-    metaData: 'Arcmedia AG | Switzerland, Lucerne',
-    duration: '2018 - 2020',
-    description: 'Arcmedia is a web agency with a focus on e-commerce and email marketing. During almost two years I worked as a frontend developer in the email marketing team and was responsible for developing forms with HTML, CSS and JavaScript for well-known clients. On top of that, I developed professional HTML email templates for our clients. I was also responsible for our IT infrastructure as a system administrator, managing all accounts and hardware for the company.'
-  },
-  {
-    title: 'Self Study Web Development',
-    metaData: 'Switzerland, Lucerne',
-    duration: '2017 - 2018',
-    description: 'During my travels through Europe and South-East-Asia I decided to become a web developer. I took some time off and learned about HTML, CSS and JavaScript and had my first experience with InDesign, Illustrator, Photoshop and After Effects. During this time I worked as a receptionist at Roche to have a stable income.'
-  },
-  {
-    title: 'Backpacking',
-    metaData: 'Europe and Southeast Asia',
-    duration: '2017 - 2017',
-    description: 'After an intense period of service in Kosovo, I took time off to travel Europe and Southeast Asia to process all the impressions and gather new ones. During this time I backpacked in Portugal, Spain, Italy, Switzerland, France, La Reunion, Sri Lanka, Thailand, Vietnam, the Philippines, Singapore and Indonesia.'
-  },
-  {
-    title: 'Transmission Specialist, Seputy IT Officer, Military Assistant',
-    metaData: 'Swissint | Kosovo, Pristina',
-    duration: '2015 - 2017',
-    description: 'International peace support is one of the three tasks of the Swiss Armed Forces laid down in the federal constitution and by the federal law on the swiss armed forces. Swissint is responsible for the conduct of peace support operations. After an intensive 3-month training from Swissint, I served two years in the KFOR forces. During this time, I worked in the tactical operations center and was responsible for the coordination and authorization of our mobile units outside the protected camp. In addition, as a military assistant I was responsible for coordinating the agenda of our national contingent commander and planning and executing relocations, as well as providing personal protection.'
-  },
-  {
-    title: 'Ventilation System Builder',
-    metaData: 'Jakob Haas AG | Switzerland, Merenschwand',
-    duration: '2014 - 2015',
-    description: 'In our family business, I took responsibility for various areas. I was responsible for procuring materials and controlling their delivery, providing and maintaining IT, and installing simple ventilation systems.'
-  },
-  {
-    title: 'Salesman',
-    metaData: 'Magazine zum Globus AG | Switzerland, Lucerne',
-    duration: '2013 - 2014',
-    description: 'At Globus, I worked as a salesman and was responsible for the business area. I advised customers interested in buying suits, ties, shoes and other clothing.'
-  },
-  {
-    title: 'Infantryman',
-    metaData: 'Swiss Army | Switzerland, Yverdon les baines',
-    duration: '2013 - 2013',
-    description: 'I fulfilled the obligation of my country and completed a training as an infantryman and was trained in urban warfare, navigation and radio engineering.'
-  },
-  {
-    title: 'Salesman Apprenticeship',
-    metaData: 'Magazine to Globus AG | Switzerland, Lucerne',
-    duration: '2009 - 2013',
-    description: 'After school, I started my career as a salesman at Globus. At this time I was very interested in observing body language and communication. During the training I learned how to communicate, how to mirror body language and the basics of good manners.'
-  },
-];
-
 const tools = [
   'VS Code',
   'FileZilla', 
@@ -200,7 +131,7 @@ export default function Home({ data }) {
         <Section id={"tools"}>
           <h2>Tools</h2>
           <div className={styles.boxContainer}>
-          {tools.map((tool, index) =>  <Box toolDetails={tool} key={index} /> )}
+          {data.tools.map((tool, index) =>  <Box toolDetails={tool} key={index} /> )}
           </div>
         </Section>
 
@@ -296,6 +227,10 @@ export async function getStaticProps() {
       {
         entries (section: "tools") {
           title
+          ...on tools_tools_Entry {
+            toolName, 
+            targetLink
+          }
         }
       }
     `
@@ -335,7 +270,6 @@ export async function getStaticProps() {
      data: {
         start: start.data.entries,
         skills: skills.data.entries,
-        // work: work.data.entries,
         work: {
           websites: work.data.entries.filter(item => { return item.category === 'website'}),
           codepens: work.data.entries.filter(item => { return item.category === 'codepen'}),
