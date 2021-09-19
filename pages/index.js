@@ -16,6 +16,8 @@ import { sendMail } from '@/services/email.js';
 import { gql } from "@apollo/client";
 import client from "../apollo-client";
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 const tools = [
   'VS Code',
   'FileZilla', 
