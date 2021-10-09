@@ -2,14 +2,16 @@ import React from 'react';
 import styles from '@/styles/Box.module.scss';
 
 interface Props {
-  toolDetails: string;
+  toolDetails: any;
 }
 
 const Box: React.FunctionComponent<Props> = ({ toolDetails }) => {
 
   return (
     <div className={styles.wrapper}>
-      <p>{toolDetails}</p>
+      <a className={styles.link} href={toolDetails.targetLink} target="_blank">
+        <p>{toolDetails.toolName}</p>
+      </a>
     </div>
   );
 

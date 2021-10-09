@@ -9,6 +9,11 @@
   align-items: center;
   margin: 0 20px 20px 0;
 }
+
+.link {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 750px) {
   .wrapper {
     margin: 0 15px 15px 0;

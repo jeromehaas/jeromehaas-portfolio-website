@@ -13,141 +13,10 @@ import Box from '@/components/partials/Box';
 import InputField from '@/components/partials/InputField';
 import Reference from '@/components/partials/Reference';
 import { sendMail } from '@/services/email.js';
+import { gql } from "@apollo/client";
+import client from "../apollo-client";
 
-
-const websites = [
-
-   {
-    link: 'https://yellowreach.io',
-    name: 'yellowreach.io',
-    date: '05.2021'
-  },
-   {
-    link: 'https://sesame-ai.tech',
-    name: 'sesame-ai.tech',
-    date: '04.2021'
-  },
-  {
-    link: 'https://reihe8.ch',
-    name: 'reihe8.ch',
-    date: '03.2021'
-  },
-  {
-    link: 'https://people-of-github.vercel.app/user/jeromehaas',
-    name: 'people-of-github.com',
-    date: '02.2021'
-  },
-  {
-    link: 'https://hellergrafik.ch',
-    name: 'hellergrafik.ch',
-    date: '09.2020'
-  },
-  {
-    link: 'https://waterisahumanright.ch',
-    name: 'waterisahumanright.ch',
-    date: '02.2020'
-  },
-  {
-    link: 'https://kreuz-abtwil.ch',
-    name: 'kreuz-abtwil.ch',
-    date: '06.2019' 
-  }, 
-  { 
-    link: 'https://pomodoro-counter.com', 
-    name: 'pomodoro-counter.ch', 
-    date: '12.2019'
-  },
-  {
-    link: 'https://decom.ch',
-    name: 'decom.ch',
-    date: '06.2018'
-  },
-];
-
-const npmPackages = [
-  {
-    link: 'https://www.npmjs.com/package/github-cube',
-    name: 'github-cube',
-    date: '09.2020'
-  },
-];
-
-const codepens= [
-  {
-    link: 'https://codepen.io/jeromehaas/pen/MWbMvMY?editors=1100',
-    name: 'Word Carousel',
-    date: '03.2021',
-  },
-];
-
-const jobs = [
-  {
-    title: 'Front-End Developer',
-    metaData: 'Calydo | Switzerland, Zug',
-    duration: '2021 - Today',
-    description: 'As an integrated agency for marketing and communication, Calydo supports companies in increasing the relevance of experience, offer and content.'
-  },
-  {
-    title: 'Front-End Developer (Opensource-Project)',
-    metaData: 'Sesame | Spain, Barcelona',
-    duration: '2020 - Today',
-    description: 'Sesame AI is an enterprise access management tool harnessing the power of machine learning and computer vision. In a team of six developers, my responsibilities was to develop the front-end for the admin dashboard with NextJS, SASS and TypeScript. Also I was in charge for planning and defining the state management wit Redux and setting up an email-server to deliver automated emails.'
-  },
-  {
-    title: 'Codeworks Bootcamp',
-    metaData: 'Codeworks | Spain, Barcelona',
-    duration: '2020 - Today',
-    description: 'Codeworks is an immersive coding bootcamp focusing on JavaScript and web development. In 12 weeks of full-time training and over 1000 hours of coding and three projects, I deepened my knowledge in JavaScript, React, TypeScript, NodeJS, Express and many other technologies and frameworks.'
-  },
-  {
-    title: 'Front-End Developer',
-    metaData: 'Arcmedia AG | Switzerland, Lucerne',
-    duration: '2018 - 2020',
-    description: 'Arcmedia is a web agency with a focus on e-commerce and email marketing. During almost two years I worked as a frontend developer in the email marketing team and was responsible for developing forms with HTML, CSS and JavaScript for well-known clients. On top of that, I developed professional HTML email templates for our clients. I was also responsible for our IT infrastructure as a system administrator, managing all accounts and hardware for the company.'
-  },
-  {
-    title: 'Self Study Web Development',
-    metaData: 'Switzerland, Lucerne',
-    duration: '2017 - 2018',
-    description: 'During my travels through Europe and South-East-Asia I decided to become a web developer. I took some time off and learned about HTML, CSS and JavaScript and had my first experience with InDesign, Illustrator, Photoshop and After Effects. During this time I worked as a receptionist at Roche to have a stable income.'
-  },
-  {
-    title: 'Backpacking',
-    metaData: 'Europe and Southeast Asia',
-    duration: '2017 - 2017',
-    description: 'After an intense period of service in Kosovo, I took time off to travel Europe and Southeast Asia to process all the impressions and gather new ones. During this time I backpacked in Portugal, Spain, Italy, Switzerland, France, La Reunion, Sri Lanka, Thailand, Vietnam, the Philippines, Singapore and Indonesia.'
-  },
-  {
-    title: 'Transmission Specialist, Seputy IT Officer, Military Assistant',
-    metaData: 'Swissint | Kosovo, Pristina',
-    duration: '2015 - 2017',
-    description: 'International peace support is one of the three tasks of the Swiss Armed Forces laid down in the federal constitution and by the federal law on the swiss armed forces. Swissint is responsible for the conduct of peace support operations. After an intensive 3-month training from Swissint, I served two years in the KFOR forces. During this time, I worked in the tactical operations center and was responsible for the coordination and authorization of our mobile units outside the protected camp. In addition, as a military assistant I was responsible for coordinating the agenda of our national contingent commander and planning and executing relocations, as well as providing personal protection.'
-  },
-  {
-    title: 'Ventilation System Builder',
-    metaData: 'Jakob Haas AG | Switzerland, Merenschwand',
-    duration: '2014 - 2015',
-    description: 'In our family business, I took responsibility for various areas. I was responsible for procuring materials and controlling their delivery, providing and maintaining IT, and installing simple ventilation systems.'
-  },
-  {
-    title: 'Salesman',
-    metaData: 'Magazine zum Globus AG | Switzerland, Lucerne',
-    duration: '2013 - 2014',
-    description: 'At Globus, I worked as a salesman and was responsible for the business area. I advised customers interested in buying suits, ties, shoes and other clothing.'
-  },
-  {
-    title: 'Infantryman',
-    metaData: 'Swiss Army | Switzerland, Yverdon les baines',
-    duration: '2013 - 2013',
-    description: 'I fulfilled the obligation of my country and completed a training as an infantryman and was trained in urban warfare, navigation and radio engineering.'
-  },
-  {
-    title: 'Salesman Apprenticeship',
-    metaData: 'Magazine to Globus AG | Switzerland, Lucerne',
-    duration: '2009 - 2013',
-    description: 'After school, I started my career as a salesman at Globus. At this time I was very interested in observing body language and communication. During the training I learned how to communicate, how to mirror body language and the basics of good manners.'
-  },
-];
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 const tools = [
   'VS Code',
@@ -173,7 +42,9 @@ const tools = [
   'Vim',
 ];
 
-export default function Home() {
+export default function Home({ data }) {
+
+  console.log(data);
 
   const [websiteDropdownStatus, setWebsiteDropdownStatus] = useState(false);
   const [npmPackageDropdownStatus, setNpmPackageDropdownStatus] = useState(false);
@@ -192,10 +63,6 @@ export default function Home() {
   const [notifierStatus, setNotifierStatus] = useState('hidden');
   const [notifierContent, setNotifierContent] = useState('');
 
-
-
-
-  
   const handleSubmit = (event) => {
     try {
       event.preventDefault();
@@ -222,7 +89,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Jérôme Haas |  Front-End Developer</title>
+        <title>{data.start[0].fullName} | {data.start[0].jobTitle}</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preload" href="/fonts/roboto/Roboto-Light.ttf" as="font" crossOrigin="" />
         <link rel="preload" href="/fonts/roboto/Roboto-Bold.ttf" as="font" crossOrigin="" />
@@ -234,14 +101,10 @@ export default function Home() {
             <div id={styles.startWrapper} className={styles.sectionWrapper}>
               <img id={styles.portrait} src="/images/jeromehaas.png" alt="Jérôme Haas"/>
               <div className={styles.text}>
-                <h1>Jérôme Haas</h1>
-                <h3 data-text="Front-End Developer" >Front-End Developer</h3>
+                <h1>{data.start[0].fullName}</h1>
+                <h3 data-text="Front-End Developer">{data.start[0].jobTitle}</h3>
                 <p>
-                  Hi, I'm Jérôme - a front-end developer experienced in JavaScript technologies. Experienced in React, TypeScript, MongoDB and SCSS and with some knowledge in Express, Koa and Angular.
-                  <br />
-                  I am a passionate developer with a quick perception. I prefer to work with frontend technologies in small teams. I like the challenge and there is nothing better for me than developing creative and solid solutions for the web.
-                  <br />
-                  In my spare time you can find me on running tracks, abroad on bagpacking trips or in front of my favorite IDE. 
+                  {data.start[0].introText}
                 </p>
               </div>
             </div>
@@ -250,32 +113,27 @@ export default function Home() {
 
         <Section id={"skills"}>
           <h2>Skills</h2>
-          <Skill name={"JavaScript"} value={85} />
-          <Skill name={"Sass"} value={80} />
-          <Skill name={"Linux"} value={75} />
-          <Skill name={"React"} value={60} />
-          <Skill name={"TypeScript"} value={35} />
-          <Skill name={"NodeJS"} value={30} />
-          <Skill name={"MongoDB"} value={25} />
-          <Skill name={"PostGres"} value={20} />
+          {data.skills.map((skill) => (
+            <Skill name={skill.technology} value={skill.skillLevel} key={skill.technology} />
+          ))}
         </Section>
 
         <Section id={"work"}>
           <h2>Work</h2>
-          <Dropdown name={"Websites"}  items={websites} status={websiteDropdownStatus} open={() => setWebsiteDropdownStatus(!websiteDropdownStatus)}/>
-          <Dropdown name={"NPM Packages"} items={npmPackages} status={npmPackageDropdownStatus} open={() => setNpmPackageDropdownStatus(!npmPackageDropdownStatus)} />
-          <Dropdown name={"Codepens"} items={codepens} status={codepenDropdownStatus} open={() => setCodepenDropdownStatus(!codepenDropdownStatus)} />
+            <Dropdown name={"Websites"}  items={data.work.websites} status={websiteDropdownStatus} open={() => setWebsiteDropdownStatus(!websiteDropdownStatus)}/>
+            <Dropdown name={"NPM Packages"} items={data.work.npmPackages} status={npmPackageDropdownStatus} open={() => setNpmPackageDropdownStatus(!npmPackageDropdownStatus)} />
+            <Dropdown name={"Codepens"} items={data.work.codepens} status={codepenDropdownStatus} open={() => setCodepenDropdownStatus(!codepenDropdownStatus)} />
           </Section>
 
         <Section id={"career"}>
           <h2>Career</h2>
-          {jobs.map((job, index) =>  <CareerPoint jobDetails={job} key={index} /> )}
+          {data.career.map((job, index) =>  <CareerPoint jobDetails={job} key={index} /> )}
         </Section>
 
         <Section id={"tools"}>
           <h2>Tools</h2>
           <div className={styles.boxContainer}>
-          {tools.map((tool, index) =>  <Box toolDetails={tool} key={index} /> )}
+          {data.tools.map((tool, index) =>  <Box toolDetails={tool} key={index} /> )}
           </div>
         </Section>
 
@@ -310,4 +168,120 @@ export default function Home() {
       </PageLayout>
     </>
   )
+}
+
+export async function getStaticProps() {
+  const work = await client.query({
+    query: gql`
+      {
+        entries (section: "work") {
+          title
+          ...on work_work_Entry {
+            category,
+            displayName, 
+            targetUrl, 
+            dateSinceOnline
+          }
+        }
+      }
+    `
+  });
+  const references = await client.query({
+    query: gql`
+      {
+        entries (section: "references") {
+          title
+        }
+      }
+    `
+  });
+  const skills = await client.query({
+    query: gql`
+      {
+        entries (section: "skill", orderBy: "skillLevel DESC") {
+          ...on skill_skill_Entry {
+            technology,
+            skillLevel
+          }
+        }
+      }
+    `
+  });
+  const career = await client.query({
+    query: gql`
+      {
+        entries (section: "career", orderBy: "durationStart DESC") {
+          title
+          ...on career_career_Entry {
+            position, 
+            companyName, 
+            location,
+            durationStart, 
+            durationEnd, 
+            description
+          }
+        }
+      }
+    `
+  });
+  const tools = await client.query({
+    query: gql`
+      {
+        entries (section: "tools") {
+          title
+          ...on tools_tools_Entry {
+            toolName, 
+            targetLink
+          }
+        }
+      }
+    `
+  });
+  const start = await client.query({
+    query: gql`
+      {
+        entries (section: "start") {
+          title
+          ...on start_start_Entry {
+            fullName,
+            jobTitle,
+            introText
+          }
+        }
+      }
+    `
+  });
+  const socialMedia = await client.query({
+    query: gql`
+      {
+        entries (section: "socialMedia") {
+          title
+          ...on socialMedia_socialMedia_Entry {
+            githubLink,
+            youtubeLink,
+            linkedinLink,
+            instagramLink
+          }
+        }
+      }
+    `
+  });
+
+  return {
+    props: {
+     data: {
+        start: start.data.entries,
+        skills: skills.data.entries,
+        work: {
+          websites: work.data.entries.filter(item => { return item.category === 'website'}),
+          codepens: work.data.entries.filter(item => { return item.category === 'codepen'}),
+          npmPackages: work.data.entries.filter(item => { return item.category === 'npmPackage'})
+        },
+        career: career.data.entries,
+        tools: tools.data.entries,
+        references: references.data.entries,
+        socialMedia: socialMedia.data.entries,
+      }
+    }
+  }
 }
