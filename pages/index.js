@@ -18,33 +18,8 @@ import client from "../apollo-client";
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-const tools = [
-  'VS Code',
-  'FileZilla', 
-  'JIRA', 
-  'Confluence', 
-  'LastPass',
-  'Dashlane',
-  'Office 365',
-  'Linux', 
-  'Windows', 
-  'MacoS',
-  'CyberDuck',
-  'Figma', 
-  'Illustrator', 
-  'Slack', 
-  'Postman',
-  'MAMP',
-  'Monday', 
-  'Typora', 
-  'Atom', 
-  'oh-my-zsh', 
-  'Vim',
-];
 
 export default function Home({ data }) {
-
-  console.log(data);
 
   const [websiteDropdownStatus, setWebsiteDropdownStatus] = useState(false);
   const [npmPackageDropdownStatus, setNpmPackageDropdownStatus] = useState(false);
