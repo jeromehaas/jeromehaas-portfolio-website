@@ -65,6 +65,7 @@ export default function Home({ data }) {
     <>
       <Head>
         <title>{data.start[0].fullName} | {data.start[0].jobTitle}</title>
+				<script defer data-domain="jeromehaas.dev" src="https://plausible.io/js/plausible.js"></script>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preload" href="/fonts/roboto/Roboto-Light.ttf" as="font" crossOrigin="" />
         <link rel="preload" href="/fonts/roboto/Roboto-Bold.ttf" as="font" crossOrigin="" />
